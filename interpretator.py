@@ -74,10 +74,16 @@ if __name__ == "__main__":
       A very useless programming language! 
     
     """)
-    line = input('>>>')
-    while line != "stop":
-        main(line)
-        print(f"-------------{len(memory)}-points-were-used-------------------------")
-        print(*memory)
+    line = ""
+    while line != ".stop":
+
         line = input('>>>')
 
+        if line == ".clear":
+            memory = [0, ]
+            continue
+        
+        else:
+            main(line)
+            print(f"-------------{len(memory)}-points-were-used-------------------------")
+            print(*memory)
