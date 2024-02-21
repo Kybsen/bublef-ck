@@ -1,89 +1,41 @@
 #!/bin/python3
 
-"""
-BuBlefuck 
+memory = [0, ]  
 
-commands:
-    & - make new point
-    ! - next point
-    % - previous point
-    @ - add 1 to the current point
-    $ - remove 1 of the current point
-
-"""
-
-memory = [0, ]
-
-def add(current_point):
-    logs = f"{current_point} + 1"
-    memory[current_point] += 1
-    return logs
-
-def remove(current_point):
-    logs = f"{current_point} - 1"
-    memory[current_point] -= 1
-    return logs
-
-def check_next_point(current_point):
-    logs = f"{current_point} -> next"
-    try:
-        memory[current_point + 1]
-    except:
-        raise MemoryError
-
-    return logs
-
-def check_back_point(current_point):
-    logs = f"{current_point} -> back"
-    try:
-        memory[current_point + 1]
-    except:
-        raise MemoryError
-
-    return logs
-
-def add_point():
-    memory.append(0)
-    return "new point"
-
+cursor = 0
 
 def main(line):
-    current_point = 0
+    global cursor, memory
+    
     for i in line:
         if i == "&":
-            print(add_point())
+            memory.append(0)
 
         if i == "!":
-            print(check_next_point(current_point))
-            current_point += 1
+            cursor += 1
 
         if i == "%":
-            print(check_back_point(current_point))
-            current_point -= 1
+            cursor -= 1
 
         if i == "@":
-            print(add(current_point))
+            memory[cursor] += 1
 
         if i == "$":
-            print(remove(current_point))
+            memory[cursor] -= 1
 
 
 if __name__ == "__main__":
-    print("""
-    
-      A very useless programming language! 
-    
-    """)
+    print("""\nA very useless programming language!\n""")
     line = ""
     while line != ".stop":
-
         line = input('>>>')
-
         if line == ".clear":
             memory = [0, ]
             continue
         
         else:
             main(line)
-            print(f"-------------{len(memory)}-points-were-used-------------------------")
             print(*memory)
+            print(cursor, ': cursor')        
+        
+
