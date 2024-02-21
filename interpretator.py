@@ -1,17 +1,18 @@
 #!/bin/python3
-memory = [0, ]  
-cursor = 0
-print("""\nBuBleFuck\n""")
-line = ""
-while line != ".stop":
-    line = input('>>>')
-    if line == ".clear": memory = [0, ]
+m = [0, ]  
+c = 0
+print("""BuBleFuck""")
+l = ""
+while l != ".stop":
+    l = input('>>>')
+    if l == ".clear": m = [0, ]
     else: 
-        for i in line:
-            if i == "&": memory.append(0)
-            if i == "!": cursor += 1
-            if i == "%": cursor -= 1
-            if i == "@": memory[cursor] += 1
-            if i == "$": memory[cursor] -= 1
+        for i in l:
+            if i == "&": m.append(0)
+            if i == "!": c += 1
+            if i == "%": c -= 1
+            if i == "@": m[c] += 1
+            if i == "$": m[c] -= 1
+    print(*m, f"; cursor : {c}") 
 
-    print(*memory, f"; cursor : {cursor}") 
+        
