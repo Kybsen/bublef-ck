@@ -1,3 +1,5 @@
+#!/bin/python3
+
 """
 BuBlefuck 
 
@@ -27,7 +29,7 @@ def check_next_point(current_point):
     try:
         memory[current_point + 1]
     except:
-        raise "Error: end of the memory"
+        raise MemoryError
 
     return logs
 
@@ -36,7 +38,7 @@ def check_back_point(current_point):
     try:
         memory[current_point + 1]
     except:
-        raise "Error: end of the memory"
+        raise MemoryError
 
     return logs
 
